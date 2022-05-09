@@ -11,8 +11,8 @@ const Home = () => {
         >
             <div className='home'>
                 <div>
+                    <Link to="/todo"><h1>Go to Todo App</h1></Link>
                     <Link to="/about"><p>go to About page</p></Link>
-                    <Link to="/todo"><p>go to TODO APP</p></Link>
                 </div>
             </div>
         </motion.div>

@@ -12,9 +12,9 @@ const About = () => {
         >
         <div className='about'>
             <div>
-                <p>About</p>
+                <h1>About</h1>
                 <Link to="/">
-                    go to home page
+                    <p>go to home page</p>
                 </Link>
             </div>
         </div>

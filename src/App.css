@@ -3,11 +3,6 @@
     width: 100vw;
   }
 
-  a p{
-    text-decoration: none;
-    color: #fff;
-  }
-
 .home{
   background: rgb(233, 73, 73);
   height: 100vh;
@@ -15,6 +10,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.home h1{
+  color: #ddd;
+}
+.home a{
+    text-decoration: none;
+    color: #fff;
 }
 
 .about{
@@ -24,6 +26,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.about p{
+  color: #ddd;
+}
+.about a{
+  text-decoration: none;
 }
 
 .bg{
