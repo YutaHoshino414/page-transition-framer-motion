@@ -1,19 +1,15 @@
-import { HStack, VStack, Text, IconButton, StackDivider, Spacer } from "@chakra-ui/react";
+import { HStack, VStack, Text, IconButton, StackDivider, Spacer, Badge } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
 
-const TodoList = () => {
-    const initialTodos = [
-        {id:1, body: 'get bred'},
-        {id:2, body: 'get butter'}
-    ]
-    const [todos, setTodos] = useState(initialTodos)
-    const deleteTodo = (id)=>{
-        const newTodos = todos.filter(todo=>{
-            return todo.id !== id
-        })
-        setTodos(newTodos)
-    }
+
+const TodoList = ({todos, deleteTodo}) => {
+
+    if (!todos.length){
+        return(
+        <Badge colorScheme="green" p={4} borderRadius="lg" >No Todos, yay!!!</Badge>
+        )
+    };
+
     return ( 
         <VStack divider={<StackDivider/>} 
             bodercolor="gray.100" borderWidth="2px" p={4}
