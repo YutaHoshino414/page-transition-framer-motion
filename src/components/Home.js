@@ -11,6 +11,7 @@ const Home = () => {
         >
             <div className='home'>
                 <div>
+                    <h1>Home</h1>
                     <Link to="/todo"><h1>Go to Todo App</h1></Link>
                     <Link to="/about"><p>go to About page</p></Link>
                 </div>

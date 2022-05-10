@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Heading, VStack, IconButton,} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { Heading, VStack, IconButton, useColorMode,} from "@chakra-ui/react";
 import TodoList from "./TodoList";
 import AddTodo from "./AddTodo";
 import {FaSun,FaMoon} from 'react-icons/fa';
@@ -11,7 +11,14 @@ const Todo = () => {
         {id:1, body: 'get bred'},
         {id:2, body: 'get butter'}
     ]
-    const [todos, setTodos] = useState(initialTodos);
+
+    const [todos, setTodos] = useState(
+        ()=> JSON.parse(localStorage.getItem('todos')) || []
+    );
+
+    useEffect(()=>{
+        localStorage.setItem('todos',JSON.stringify(todos))
+    },[todos])
 
     const addTodo = (todo)=>{
         setTodos([...todos, todo])
@@ -23,8 +30,10 @@ const Todo = () => {
         })
         setTodos(newTodos)
     }
+    const  {colorMode, toggleColorMode} = useColorMode();
+
     return ( 
-        <ChakraProvider>
+        <>
         <motion.div className="bg"
             initial={{scaleY:1}}
             animate={{scaleY:0}}
@@ -33,7 +42,11 @@ const Todo = () => {
         >
         </motion.div>
         <VStack p={4}>
-            <IconButton icon={<FaSun />} isRound='true' size="lg" alignSelf="flex-end" />
+            <IconButton 
+                icon={ colorMode ==='light'? <FaSun />:<FaMoon/>} 
+                isRound='true' size="lg" alignSelf="flex-end"
+                onClick={toggleColorMode}
+            />
             <Heading 
                 p={6} fontWeight="extrabold" size="2xl"
                 bgGradient="linear(to-r, pink.500, pink.300, blue.500)"
@@ -44,7 +57,7 @@ const Todo = () => {
             <TodoList todos={todos} deleteTodo={deleteTodo} />
             <AddTodo addTodo={addTodo} />
         </VStack>
-        </ChakraProvider>
+        </>
     );
 }
 
